@@ -1,6 +1,10 @@
 package br.com.docket;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ValidacaoCSV {
 
@@ -8,15 +12,19 @@ public class ValidacaoCSV {
 			"header-arquivo-itau"
 	};
 
-	private void validarArquivosCSV() {
+	public void validarArquivosCSV() {
 		ClassLoader classLoader = this.getClass().getClassLoader();
 
 		for (int i = 0; i < arquivosCSV.length; i++) {
-			String nomeArquivo = arquivosCSV + ".csv";
+			String nomeArquivo = arquivosCSV[i] + ".csv";
 
-			File file = new File(classLoader.getResource(nomeArquivo).getFile());
+			Path path = Paths.get(classLoader.getResource(nomeArquivo).getPath());
 
-
+			try {
+				List<String> lines = Files.readAllLines(path);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 	}

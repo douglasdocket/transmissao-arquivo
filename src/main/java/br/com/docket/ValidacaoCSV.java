@@ -9,7 +9,8 @@ import java.util.List;
 public class ValidacaoCSV {
 
 	private String[] arquivosCSV = {
-			"header-arquivo-itau"
+			"header-arquivo-itau",
+			"header-lote-itau"
 	};
 
 	public boolean validarArquivosCSV() {

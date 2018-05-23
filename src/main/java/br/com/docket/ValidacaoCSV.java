@@ -12,7 +12,9 @@ public class ValidacaoCSV {
 			"header-arquivo-itau"
 	};
 
-	public void validarArquivosCSV() {
+	public boolean validarArquivosCSV() {
+
+		boolean valido = true;
 
 		for (int i = 0; i < arquivosCSV.length; i++) {
 			String arquivoCSV = arquivosCSV[i];
@@ -32,10 +34,14 @@ public class ValidacaoCSV {
 
 				if (quantidadeVirgula != 5) {
 					System.err.println("Arquivo " + arquivoCSV + " linha " + (j + 1) + " está inválida.");
+					valido = false;
 				}
 			}
 
 		}
+
+		return valido;
+
 	}
 
 	private List<String> pegarLinhas(String arquivoCSV) {

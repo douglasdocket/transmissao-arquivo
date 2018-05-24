@@ -52,7 +52,7 @@ public class ValidadorCSV {
 			return;
 		}
 
-		System.out.println("\n=== Iniciando nova validação ===");
+		System.out.println("\n=== Validação ===");
 		System.out.println("Arquivo: " + path);
 
 		List<String> lines = Files.lines(path).collect(Collectors.toList());

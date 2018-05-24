@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 
 public class ValidadorCSV {
 
-	public static void main(String[] args) throws IOException {
-		new ValidadorCSV().executarValidacao();
-	}
-
-	public void executarValidacao() throws IOException {
+	public void executarValidacao() {
 		Path path = Paths.get("layout-arquivo");
 
-		explorar(path);
+		try {
+			explorar(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 

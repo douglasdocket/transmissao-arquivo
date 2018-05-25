@@ -1,4 +1,4 @@
-package br.com.docket;
+package br.com.docket.transmissaoarquivo;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -96,6 +96,8 @@ public class ValidadorCSV {
 
 		System.out.println("Qtd. de linhas válidas: " + quantidadeLinhasValidas);
 		System.out.println("Qtd. de linhas inválidas: " + quantidadeLinhasInvalidas);
+
+		System.out.println();
 
 	}
 

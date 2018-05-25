@@ -1,4 +1,4 @@
-package br.com.docket.itau;
+package br.com.docket.transmissaoarquivo.itau;
 
 public class HeaderArquivo {
 

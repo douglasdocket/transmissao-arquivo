@@ -1,48 +1,51 @@
 package br.com.docket.transmissaoarquivo;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarregarCSV {
 
-	public static void main(String[] args) {
-		new CarregarCSV().executarCarregamento();
-	}
+	public static void main(String[] args) throws IOException {
 
-	public void executarCarregamento() {
-		Path path = Paths.get("layout-arquivo");
 
-		try {
-			explorar(path);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+		Path arquivo = Paths.get("layout-arquivo/itau/arquivo");
 
-	private void explorar(Path path) throws IOException {
+		List<Path> paths = Files.list(arquivo).collect(Collectors.toList());
 
-		if (Files.notExists(path)) {
-			return;
-		}
+		for (Path path : paths) {
 
-		if (Files.isHidden(path)) {
-			return;
-		}
-
-		if (!Files.isReadable(path)) {
-			return;
-		}
-
-		if (Files.isDirectory(path)) {
-			if (path.getFileName().equals("arquivo")) {
-
+			if (Files.notExists(path)) {
+				continue;
 			}
 
+			if (Files.isHidden(path)) {
+				continue;
+			}
+
+			if (!Files.isReadable(path)) {
+				continue;
+			}
+
+			if (Files.isDirectory(path)) {
+				continue;
+			}
+
+			String fileName = path.getFileName().toString();
+
+			if (!fileName.endsWith(".csv")) {
+				continue;
+			}
+
+			//TODO nath implementar leitura de linhas e para cada linha criar uma nova instancia de HeaderArquivo setar atributos e salvar em uma lista e imprimir essa lista em formato JSON no console ao terminar todo processo
 
 
 		}
+
 
 	}
 
